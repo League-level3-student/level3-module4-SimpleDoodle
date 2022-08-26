@@ -40,7 +40,7 @@ public class _02_TextUndoRedo implements KeyListener {
 		label.addKeyListener(this);
 		placeholder.append("");
 		label.setText(placeholder.toString());
-		frame.pack();
+		frame.setSize(500, 500);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 	}
@@ -63,7 +63,6 @@ public class _02_TextUndoRedo implements KeyListener {
 			placeholder.append(e.getKeyChar());
 		}
 		label.setText(placeholder.toString());
-		frame.pack();
 	}
 
 	@Override
