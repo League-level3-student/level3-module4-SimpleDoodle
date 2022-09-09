@@ -26,6 +26,8 @@
 package _02_IntroToQueues;
 
 import java.util.ArrayDeque;
+import java.util.Iterator;
+import java.util.Stack;
 
 /*
  * Complete the calculateWaitTime() method here!
@@ -33,9 +35,25 @@ import java.util.ArrayDeque;
  */
 
 public class _02_BaseballTickets {
+	public static int calculateWaitTime(ArrayDeque<Integer> ticketsQueue, int position) {
+		int time = 0;
+		while (true) {
+			if (position == 0 && ticketsQueue.getFirst() == 1) {
+				time += 1;
+				break;
+			}
 
-    public static int calculateWaitTime( ArrayDeque<Integer> ticketsQueue, int position ) {
-        
-        return -1;
-    }
+			if (ticketsQueue.getFirst() - 1 != 0) {
+				ticketsQueue.addLast(ticketsQueue.getFirst() - 1);
+			}
+			ticketsQueue.removeFirst();
+			if (position != 0) {
+				position -= 1;
+			} else {
+				position = ticketsQueue.size() - 1;
+			}
+			time += 1;
+		}
+		return time;
+	}
 }
