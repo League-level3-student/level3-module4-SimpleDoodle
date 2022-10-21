@@ -29,18 +29,16 @@ public class Maze {
 
 	// 4. This method iterates through the cells and draws them
 	public void draw(Graphics g) {
-		Cell mooncell;
 		for (int i = 0; i < cellarray.length; i++) {
 			for (int j = 0; j < cellarray.length; j++) {
-				mooncell = new Cell(cellarray[i][j].getRow(), cellarray[i][j].getCol());
-				mooncell.draw(g);
+				cellarray[i][j].draw(g);
 			}
 		}
 	}
 
 	// 5. This method returns the selected cell
 	public Cell getCell(int row, int col) {
-		return new Cell(cellarray[row][col].getRow(), cellarray[row][col].getCol());
+		return cellarray[row][col];
 	}
 
 	public int getRows() {
