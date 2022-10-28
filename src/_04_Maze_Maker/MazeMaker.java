@@ -25,19 +25,25 @@ public class MazeMaker {
 		// finish line.
 		int position = randGen.nextInt(4);
 		int fourSides = randGen.nextInt(3);
+		int random = randGen.nextInt(4);
+		int mandom = randGen.nextInt(4);
 		if (fourSides == 0) {
 			maze.cellarray[0][position].setNorthWall(false);
+			maze.cellarray[4][position].setSouthWall(false);
 			
 		} else if (fourSides == 1) {
 			maze.cellarray[position][0].setWestWall(false);
+			maze.cellarray[position][4].setEastWall(false);
 		}
 
 		else if (fourSides == 2) {
 			maze.cellarray[4][position].setSouthWall(false);
+			maze.cellarray[0][position].setNorthWall(false);
 		}
 
 		else if (fourSides == 3) {
 			maze.cellarray[position][4].setEastWall(false);
+			maze.cellarray[position][0].setWestWall(false);
 		}
 		System.out.println("Side:" + fourSides);
 		System.out.println("Row/Column:" + position);
@@ -45,7 +51,7 @@ public class MazeMaker {
 		// 2. select a random cell in the maze to start
 
 		// 3. call the selectNextPath method with the randomly selected cell
-
+maze.cellarray[][].
 		return maze;
 	}
 
