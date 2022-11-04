@@ -13,6 +13,11 @@ public class MazeMaker {
 
 	private static Random randGen = new Random();
 	private static Stack<Cell> uncheckedCells = new Stack<Cell>();
+	static int position = randGen.nextInt(4);
+	static int fourSides = randGen.nextInt(3);
+	static int random = randGen.nextInt(4);
+	static int mandom = randGen.nextInt(4);
+	static int storage = 0;
 
 	public static Maze generateMaze(int r, int c) {
 		rows = r;
@@ -23,25 +28,26 @@ public class MazeMaker {
 		// This will be the starting point. Then select a random cell along
 		// the opposite wall and remove its exterior wall. This will be the
 		// finish line.
-		int position = randGen.nextInt(4);
-		int fourSides = randGen.nextInt(3);
-		int random = randGen.nextInt(4);
-		int mandom = randGen.nextInt(4);
+
 		if (fourSides == 0) {
-			maze.cellarray[0][position].setNorthWall(false);
+			storage = 0;
+			maze.cellarray[storage][position].setNorthWall(false);
 			maze.cellarray[4][position].setSouthWall(false);
-			
+
 		} else if (fourSides == 1) {
-			maze.cellarray[position][0].setWestWall(false);
+			storage = 0;
+			maze.cellarray[position][storage].setWestWall(false);
 			maze.cellarray[position][4].setEastWall(false);
 		}
 
 		else if (fourSides == 2) {
-			maze.cellarray[4][position].setSouthWall(false);
+			storage = 4;
+			maze.cellarray[storage][position].setSouthWall(false);
 			maze.cellarray[0][position].setNorthWall(false);
 		}
 
 		else if (fourSides == 3) {
+			storage = 4;
 			maze.cellarray[position][4].setEastWall(false);
 			maze.cellarray[position][0].setWestWall(false);
 		}
@@ -51,14 +57,21 @@ public class MazeMaker {
 		// 2. select a random cell in the maze to start
 
 		// 3. call the selectNextPath method with the randomly selected cell
-maze.cellarray[][].
+
 		return maze;
 	}
 
 	// 4. Complete the selectNextPathMethod
 	private static void selectNextPath(Cell currentCell) {
 		// A. SET currentCell as visited
-
+		if (fourSides == 1 && fourSides == 3) {
+			maze.cellarray[storage][position].setBeenVisited(true);
+			getUnvisitedNeighbors(maze.cellarray[storage][position]);
+		}
+		if (fourSides == 2 && fourSides == 4) {
+			maze.cellarray[position][storage].setBeenVisited(true);
+			getUnvisitedNeighbors(maze.cellarray[position][storage]);
+		}
 		// B. check for unvisited neighbors using the cell
 
 		// C. if has unvisited neighbors,
