@@ -73,19 +73,24 @@ public class MazeMaker {
 			plusminus = -1;
 		}
 		if (xy == 0) {
-			if (maze.cellarray[random+plusminus][mandom].hasBeenVisited() == false) {
-				uncheckedCells
+			if (maze.cellarray[random+1][mandom].hasBeenVisited() == false) {
+				getUnvisitedNeighbors(maze.cellarray[random+1][mandom]);
+				uncheckedCells.push(maze.cellarray[random+1][mandom]);
+				removeWalls(maze.cellarray[random]);
 			}
-			else if (maze.cellarray[random+plusminus][mandom].hasBeenVisited() == false) {
-				
+			else if (maze.cellarray[random-1][mandom].hasBeenVisited() == false) {
+				getUnvisitedNeighbors(maze.cellarray[random-1][mandom]);
+				uncheckedCells.push(maze.cellarray[random-1][mandom]);
 			}
 		}
 		else if (xy == 1) {
-			 if (maze.cellarray[random][mandom+plusminus].hasBeenVisited() == false) {
-				
+			 if (maze.cellarray[random][mandom+1].hasBeenVisited() == false) {
+				getUnvisitedNeighbors(maze.cellarray[random][mandom+1]);
+				uncheckedCells.push(maze.cellarray[random][mandom+1]);
 			}
-			 else if (maze.cellarray[random][mandom-plusminus].hasBeenVisited() == false) {
-				 
+			 else if (maze.cellarray[random][mandom-1].hasBeenVisited() == false) {
+				getUnvisitedNeighbors(maze.cellarray[random][mandom-1]);	
+				uncheckedCells.push(maze.cellarray[random][mandom-1]);
 			 }
 		}
 		
