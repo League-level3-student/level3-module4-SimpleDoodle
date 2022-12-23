@@ -13,10 +13,10 @@ public class MazeMaker {
 
 	private static Random randGen = new Random();
 	private static Stack<Cell> uncheckedCells = new Stack<Cell>();
-	static int position = randGen.nextInt(4);
-	static int fourSides = randGen.nextInt(3);
-	static int random = randGen.nextInt(4);
-	static int mandom = randGen.nextInt(4);
+	static int position = randGen.nextInt(5);
+	static int fourSides = randGen.nextInt(4);
+	static int random = randGen.nextInt(5);
+	static int mandom = randGen.nextInt(5);
 	static int storage = 0;
 
 	public static Maze generateMaze(int r, int c) {
@@ -55,8 +55,8 @@ public class MazeMaker {
 		System.out.println("Row/Column:" + position);
 
 		// 2. select a random cell in the maze to start
-		random = randGen.nextInt(4);
-		mandom = randGen.nextInt(4);
+		random = randGen.nextInt(5);
+		mandom = randGen.nextInt(5);
 		// 3. call the selectNextPath method with the randomly selected cell
 		selectNextPath(maze.cellarray[random][mandom]);
 		return maze;
@@ -65,35 +65,18 @@ public class MazeMaker {
 	// 4. Complete the selectNextPathMethod
 	private static void selectNextPath(Cell currentCell) {
 		// A. SET currentCell as visited
+		ArrayList<Cell> cellStorage;
+		int randomNeighbor;
 		maze.cellarray[random][mandom].setBeenVisited(true);
-		// B. check for unvisited neighbors using the cell
-		int xy = randGen.nextInt(1);
-		int plusminus = randGen.nextInt(1);
-		if (plusminus == 0) {
-			plusminus = -1;
-		}
-		if (xy == 0) {
-			if (maze.cellarray[random+1][mandom].hasBeenVisited() == false) {
-				getUnvisitedNeighbors(maze.cellarray[random+1][mandom]);
-				uncheckedCells.push(maze.cellarray[random+1][mandom]);
-				removeWalls(maze.cellarray[random]);
-			}
-			else if (maze.cellarray[random-1][mandom].hasBeenVisited() == false) {
-				getUnvisitedNeighbors(maze.cellarray[random-1][mandom]);
-				uncheckedCells.push(maze.cellarray[random-1][mandom]);
-			}
-		}
-		else if (xy == 1) {
-			 if (maze.cellarray[random][mandom+1].hasBeenVisited() == false) {
-				getUnvisitedNeighbors(maze.cellarray[random][mandom+1]);
-				uncheckedCells.push(maze.cellarray[random][mandom+1]);
-			}
-			 else if (maze.cellarray[random][mandom-1].hasBeenVisited() == false) {
-				getUnvisitedNeighbors(maze.cellarray[random][mandom-1]);	
-				uncheckedCells.push(maze.cellarray[random][mandom-1]);
-			 }
-		}
 		
+		// B. check for unvisited neighbors using the cell
+		
+		cellStorage = getUnvisitedNeighbors(maze.cellarray[random][mandom]);
+
+		if (cellStorage.size() >= 1) {
+		randomNeighbor = randGen.nextInt(cellStorage.size());
+		uncheckedCells.push()
+		}
 		// C. if has unvisited neighbors,
 		// C1. select one at random.
 
