@@ -67,15 +67,24 @@ public class MazeMaker {
 		// A. SET currentCell as visited
 		ArrayList<Cell> cellStorage;
 		int randomNeighbor;
-		maze.cellarray[random][mandom].setBeenVisited(true);
-		
+		Cell current = maze.cellarray[random][mandom];
+
+		current.setBeenVisited(true);
 		// B. check for unvisited neighbors using the cell
-		
-		cellStorage = getUnvisitedNeighbors(maze.cellarray[random][mandom]);
+		cellStorage = getUnvisitedNeighbors(currentCell);
 
 		if (cellStorage.size() >= 1) {
-		randomNeighbor = randGen.nextInt(cellStorage.size());
-		uncheckedCells.push()
+			randomNeighbor = randGen.nextInt(cellStorage.size());
+			Cell notCurrent = cellStorage.get(randomNeighbor);
+			uncheckedCells.push(notCurrent);
+			removeWalls(notCurrent, currentCell);
+			currentCell = notCurrent;
+			currentCell.setBeenVisited(true);
+			selectNextPath(currentCell);
+		}
+		if (cellStorage.size() == 0 && uncheckedCells.size() > 0) {
+			currentCell = uncheckedCells.pop();
+			selectNextPath(currentCell);
 		}
 		// C. if has unvisited neighbors,
 		// C1. select one at random.
